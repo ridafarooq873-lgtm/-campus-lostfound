@@ -31,13 +31,13 @@ export default function HomePage() {
   // SPLASH SCREEN - Shows for 2.5 seconds
   if (showSplash) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      <div className="flex items-center justify-center h-screen w-screen bg-black overflow-hidden">
         <img 
           src="/logo.png" 
           alt="Campus Lost Found Logo" 
-          width={200} 
-          height={200}
-          className="animate-pulse"
+          className="w-full h-full object-contain animate-pulse p-8"
+        />
+      </div>
         />
       </div>
     )
