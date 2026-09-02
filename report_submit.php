@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'includes/db.php'; // change path to your db connection
+include 'includes/db.php'; 
 
 if(!isset($_SESSION['user_id'])){ die("Login first"); }
 
@@ -10,23 +10,30 @@ if(isset($_POST['submit_report'])){
     
     if($stmt->execute()){
         header("Location: reports.php?success=1");
+        exit;
     } else {
         echo "Error: " . $conn->error;
     }
 }
 ?>
 
-<!-- PASTE THIS FORM WHERE USERS SUBMIT LOST/FOUND -->
+<!DOCTYPE html>
+<html>
+<head><title>Report Item</title></head>
+<body>
+<h3>Report Lost/Found Item</h3>
 <form method="POST">
-  <h3>Report Lost/Found Item</h3>
   <select name="type" required>
+    <option value="">Select</option>
     <option value="Lost">Lost</option>
     <option value="Found">Found</option>
-  </select>
-  <input type="text" name="item_name" placeholder="Item Name e.g. ID Card" required>
-  <textarea name="description" placeholder="Description"></textarea>
-  <input type="text" name="location" placeholder="Location e.g. Library">
-  <input type="date" name="date">
-  <input type="text" name="contact" placeholder="Your Phone/Email" required>
+  </select><br><br>
+  <input type="text" name="item_name" placeholder="Item Name e.g. ID Card" required><br><br>
+  <textarea name="description" placeholder="Description"></textarea><br><br>
+  <input type="text" name="location" placeholder="Location e.g. Library"><br><br>
+  <input type="date" name="date"><br><br>
+  <input type="text" name="contact" placeholder="Your Phone/Email" required><br><br>
   <button type="submit" name="submit_report">Submit Report</button>
 </form>
+</body>
+</html>
