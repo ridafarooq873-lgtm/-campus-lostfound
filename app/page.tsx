@@ -28,14 +28,14 @@ export default function HomePage() {
     setUser(null)
   }
 
- // SPLASH SCREEN - Smooth fade + Fullscreen black
+ // SPLASH SCREEN - Perfect size for phone + laptop
   if (showSplash) {
     return (
       <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center transition-opacity duration-700 ease-in-out">
-        <img 
-          src="/logo.png" 
-          alt="Campus Lost Found Logo" 
-          className="w-full h-full object-cover animate-pulse"
+        <img
+          src="/logo.png"
+          alt="Campus Lost Found Logo"
+          className="w-3/4 max-w-md md:max-w-lg object-contain animate-pulse"
         />
       </div>
     )
