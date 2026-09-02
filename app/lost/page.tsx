@@ -4,7 +4,7 @@ import { useState } from 'react'
 export default function LostForm() {
   const [form, setForm] = useState({name:'', location:'', desc:'', contact:''})
 
-  const handleSubmit = (e) => {
+     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const items = JSON.parse(localStorage.getItem('lostItems') || '[]')
     items.push({...form, type: 'lost', date: new Date().toLocaleString()})
