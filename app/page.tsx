@@ -70,6 +70,9 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
+        <Link href="/bot" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition mt-6">
+  🤖 Talk to AI Assistant
+</Link>
       </div>
 
       {/* LOGIN POPUP */}
