@@ -28,16 +28,14 @@ export default function HomePage() {
     setUser(null)
   }
 
-  // SPLASH SCREEN - Shows for 2.5 seconds
+ // SPLASH SCREEN - Smooth fade + Fullscreen black
   if (showSplash) {
     return (
-      <div className="flex items-center justify-center h-screen w-screen bg-black overflow-hidden">
+      <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center transition-opacity duration-700 ease-in-out">
         <img 
           src="/logo.png" 
           alt="Campus Lost Found Logo" 
-          className="w-full h-full object-contain animate-pulse p-8"
-        />
-      </div>
+          className="w-full h-full object-cover animate-pulse"
         />
       </div>
     )
