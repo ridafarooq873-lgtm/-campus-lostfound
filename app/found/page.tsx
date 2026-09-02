@@ -1,21 +1,34 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function FoundForm() {
   const [form, setForm] = useState({name:'', location:'', desc:'', contact:''})
+  const router = useRouter()
 
- const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const items = JSON.parse(localStorage.getItem('foundItems') || '[]')
     items.push({...form, type: 'found', date: new Date().toLocaleString()})
     localStorage.setItem('foundItems', JSON.stringify(items))
     alert('Report Submitted!')
     setForm({name:'', location:'', desc:'', contact:''})
+    router.push('/') // This will close the page and go back to home
+  }
+
+  const handleClose = () => {
+    router.push('/') // Back button / X button
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-6">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={handleClose}>
+      <main onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-2xl relative">
+        
+        {/* CLOSE BUTTON */}
+        <button onClick={handleClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl font-bold">
+          ×
+        </button>
+
         <h1 className="text-3xl font-bold text-green-500 mb-6">Report Found Item</h1>
         
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -53,10 +66,10 @@ export default function FoundForm() {
           </button>
         </form>
 
-        <a href="/" className="block text-center mt-4 text-gray-600 hover:underline">
+        <button onClick={handleClose} className="block text-center w-full mt-4 text-gray-600 hover:underline">
           ← Back to Home
-        </a>
-      </div>
-    </main>
+        </button>
+      </main>
+    </div>
   )
 }
