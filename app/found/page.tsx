@@ -4,7 +4,7 @@ import { useState } from 'react'
 export default function FoundForm() {
   const [form, setForm] = useState({name:'', location:'', desc:'', contact:''})
 
-  const handleSubmit = (e) => {
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const items = JSON.parse(localStorage.getItem('foundItems') || '[]')
     items.push({...form, type: 'found', date: new Date().toLocaleString()})
